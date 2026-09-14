@@ -65,7 +65,7 @@ var tasks = LoadTasks();
 
 if (args.Length == 0)
 {
-    Console.WriteLine("Kullanım: dotnet run [add|list|done] ...");
+    Console.WriteLine("Kullanım: dotnet run [add|list|done|delete] ...");
     return;
 }
 
