@@ -48,11 +48,24 @@ void CompleteTask(List<TaskItem> tasks, int index)
     Console.WriteLine($"Tamamlandı: {tasks[index - 1].Title}");
 }
 
+void DeleteTask(List<TaskItem> tasks, int index)
+{
+    if (index < 1 || index > tasks.Count)
+    {
+        Console.WriteLine("Geçersiz görev numarası.");
+        return;
+    }
+    var task = tasks[index - 1];
+    tasks.RemoveAt(index - 1);
+    SaveTasks(tasks);
+    Console.WriteLine($"Silindi: {task.Title}");
+}
+
 var tasks = LoadTasks();
 
 if (args.Length == 0)
 {
-    Console.WriteLine("Kullanım: dotnet run [add|list|done] ...");
+    Console.WriteLine("Kullanım: dotnet run [add|list|done|delete] ...");
     return;
 }
 
@@ -67,8 +80,11 @@ switch (args[0])
     case "done" when args.Length > 1:
         CompleteTask(tasks, int.Parse(args[1]));
         break;
+    case "delete" when args.Length > 1:
+        DeleteTask(tasks, int.Parse(args[1]));
+        break;
     default:
-        Console.WriteLine("Kullanım: dotnet run [add|list|done] ...");
+        Console.WriteLine("Kullanım: dotnet run [add|list|done|delete] ...");
         break;
 }
 
