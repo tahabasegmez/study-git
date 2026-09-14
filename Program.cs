@@ -84,7 +84,7 @@ switch (args[0])
         DeleteTask(tasks, int.Parse(args[1]));
         break;
     default:
-        Console.WriteLine("Kullanım: dotnet run [add|list|done] ...");
+        Console.WriteLine("Kullanım: dotnet run [add|list|done|delete] ...");
         break;
 }
 
